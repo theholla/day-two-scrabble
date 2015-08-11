@@ -5,18 +5,10 @@ import static org.junit.Assert.*;
 
 public class Scrabble {
 
-/*
     @Test
-    public void scrabble_LettersFromGroupOne_1() {
-    Scrabble testScrabble = new Scrabble();
-    assertEquals(3, testScrabble.scrabble('A'));
-    }
-
-    */
-    @Test
-    public void scrabbleScore_returnsScrabbleGroupOne_1() {
+    public void letterValues_returnsValueOfALetter_1() {
         Scrabble app = new Scrabble();
         Integer score = 1;
-        assertEquals(score, app.scrabbleGroupOne('A'));
+        assertEquals(score, app.letterValues("A"));
     }
 }

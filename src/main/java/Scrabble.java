@@ -1,36 +1,65 @@
 import java.util.HashMap;
 import java.util.ArrayList;
+import spark.ModelAndView;
+import spark.template.velocity.VelocityTemplateEngine;
+import static spark.Spark.*;
+import java.io.Console;
 
 public class Scrabble {
     public static void main(String[] args) {
+/*
+    get("/form", (request, response) -> {
+          HashMap model = new HashMap();
+          model.put("template", "templates/form.vtl");
+          return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+*/
 
-        char[] scrabbleGroupOne = {'A', 'E', 'I', 'O', 'U','L', 'N', 'R', 'S', 'T'};
-        /*char[] scrabbleGroupTwo = {'D', 'G'};
-        char[] scrabbleGroupThree = {'B', 'C', 'M', 'P'};
-        char[] scrabbleGroupFour = {'F', 'H', 'V', 'W', 'Y'};
-        char[] scrabbleGroupFive = {'K'};
-        char[] scrabbleGroupSix = {'J', 'X'};
-        char[] scrabbleGroupSeven = {'Q', 'Z'};*/
+    HashMap <String, Integer> letterValues = new HashMap<String, Integer>(); //do we add data type??
+    letterValues.put("A", 1);
+    letterValues.put("E", 1);
+    letterValues.put("I", 1);
+    letterValues.put("O", 1);
+    letterValues.put("U", 1);
+    letterValues.put("L", 1);
+    letterValues.put("N", 1);
+    letterValues.put("R", 1);
+    letterValues.put("S", 1);
+    letterValues.put("T", 1);
 
-        HashMap<Character[],Integer> groupOne = new HashMap <Character[],Integer>();
-        groupOne.put(scrabbleGroupOne, 1);
-        /*HashMap<Character[],Integer> groupOne = new HashMap <Character[],Integer>();
-        groupOne.put(scrabbleGroupTwo, 2);
-        HashMap<Character[],Integer> groupOne = new HashMap <Character[],Integer>();
-        groupOne.put(scrabbleGroupThree, 3);
-        HashMap<Character[],Integer> groupOne = new HashMap <Character[],Integer>();
-        groupOne.put(scrabbleGroupFour, 4);
-        HashMap<Character[],Integer> groupOne = new HashMap <Character[],Integer>();
-        groupOne.put(scrabbleGroupFive, 5);
-        HashMap<Character[],Integer> groupOne = new HashMap <Character[],Integer>();
-        groupOne.put(scrabbleGroupSix, 8);
-        HashMap<Character[],Integer> groupOne = new HashMap <Character[],Integer>();
-        groupOne.put(scrabbleGroupSeven, 10);*/
+    letterValues.put("D", 2);
+    letterValues.put("G", 2);
+
+    letterValues.put("B", 3);
+    letterValues.put("C", 3);
+    letterValues.put("M", 3);
+    letterValues.put("P", 3);
+
+    letterValues.put("F", 4);
+    letterValues.put("H", 4);
+    letterValues.put("V", 4);
+    letterValues.put("W", 4);
+    letterValues.put("Y", 4);
+
+    letterValues.put("K", 5);
+
+    letterValues.put("J", 8);
+    letterValues.put("X", 8);
+
+    letterValues.put("Q", 10);
+    letterValues.put("Z", 10);
 
 
+    Console console = System.console();
+    String userInput = console.readLine();
 
+    String[] userInputArray = userInput.toUpperCase().split("");
 
+    Integer totalScore = 0;
+    for (String letter : userInputArray) {
+        Integer letterScore = letterValues.get(letter);
+        totalScore += letterScore;
     }
-
-
+    System.out.println(totalScore);
+  }
 }
