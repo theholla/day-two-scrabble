@@ -1,12 +1,18 @@
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.ArrayList;
+import static spark.Spark.*;
+
+//to use velocity templates:
+import java.util.HashMap;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
-import static spark.Spark.*;
+
 import java.io.Console;
+
 
 public class Scrabble {
     public static void main(String[] args) {
+        staticFileLocation("/public");
 /*
     get("/form", (request, response) -> {
           HashMap model = new HashMap();
@@ -15,7 +21,7 @@ public class Scrabble {
     }, new VelocityTemplateEngine());
 */
 
-    HashMap <String, Integer> letterValues = new HashMap<String, Integer>(); //do we add data type??
+    HashMap <String, Integer> letterValues = new HashMap<String, Integer>();
     letterValues.put("A", 1);
     letterValues.put("E", 1);
     letterValues.put("I", 1);
